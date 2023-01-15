@@ -1,1 +1,1 @@
-# Typescript 공부장
+# Typescript 공부방
