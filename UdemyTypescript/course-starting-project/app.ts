@@ -1,4 +1,8 @@
 function add(n1: number, n2: number) {
+  // 바닐라 자바스크립트로 했을 경우. 조건문으로 확인
+  // if (typeof n1 !== "number" || typeof n2 !== "number") {
+  //   throw new Error("숫자가 아닙니다.");
+  // }
   return n1 + n2;
 }
 
