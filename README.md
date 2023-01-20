@@ -5,8 +5,9 @@
 https://nodejs.org/ko/
 
 ## Typescript 설치
-
-#### npm install -g typescript
+```
+npm install -g typescript
+```
 
 ## 개별 파일 컴파일
 
@@ -28,7 +29,13 @@ lite-server를 설치한 뒤 package.json "script"에
 ## 타입 추론
 
 타입 추론은 명시된 타입이 타입스크립트가 자동으로 해석한 방법이다.
+
+```
 ex) const a = 1;
+```
+
 a는 숫자 1이 할당되었으므로 타입스크립트는 자동으로 number로 인식한다.
+```
 const a: number = 1;
+```
 이처럼 타입추론이 가능한 곳에는 타입을 따로 지정하지 않는것이 좋다.
