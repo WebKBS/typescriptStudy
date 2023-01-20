@@ -1,7 +1,11 @@
+// type aliases 타입 별칭 사용
+type Combinable = number | string;
+type ConversionDescriptor = "as-number" | "as-text";
+
 function combine(
-  input1: number | string,
-  input2: number | string,
-  resultConversion: "as-number" | "as-text" // 투 문자열만 특정하여 지정
+  input1: Combinable,
+  input2: Combinable,
+  resultConversion: ConversionDescriptor // 투 문자열만 특정하여 지정
 ) {
   let result;
   if (
