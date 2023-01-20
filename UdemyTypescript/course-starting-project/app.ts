@@ -1,4 +1,7 @@
 // type aliases 타입 별칭 사용
+// 타입 별칭을 사용하면 리팩토링 처럼 불필요한 반족을 피하고 타입 중심에서 관리할 수 있다.
+// 유니온 타입 가능뿐만아니라 객체 타입도 가능하다.
+
 type Combinable = number | string;
 type ConversionDescriptor = "as-number" | "as-text";
 
