@@ -17,3 +17,8 @@ userName = "Hello";
 if (typeof userInput === "string") {
   userName = userInput;
 }
+
+function generateError(message: string, code: number): never {
+  throw { message: message, errorCode: code };
+}
+generateError("에러가 발생했습니다!!", 300);
