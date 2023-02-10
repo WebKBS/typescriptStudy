@@ -31,6 +31,22 @@ lite-server를 설치한 뒤 package.json "script"에
 ### tsc 만 사용하면 한번에 모든 파일 감지
 ### tsc -w 실시간 감지
 
+## 특정 파일 제외하기
+tsc --init
+tsconfig.json 파일 생성.
+json 파일 가장아래 exclude 를 입력하고, 제외할 파일이름을 문자열로 적는다.
+** node_modules도 제외시킬 수 있지만. default값으로 제외 되어있어서 굳이 하지 않아도 된다.
+
+*.dev.ts -> .dev.ts 이름을 가진 모든 파일 제외.
+**/*.dev.ts -> 모든 폴더안의 dev.ts 파일 제외
+
+### 위와 반대로 includes를 사용하면 esclude와 반대로 작동한다. 지정한, 포함된 파일만 컴파일.
+
+
+## compilerOptions 살펴보기
+"target": "es2016", : javascript 버전을 뜻한다.
+"lib": [], lib을 설정하게 되면 javascript 내장 API 기능들을 선택적으로 사용할 수 있다.
+
 
 
 ## 타입 추론
