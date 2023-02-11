@@ -50,6 +50,7 @@ json 파일 가장아래 exclude 를 입력하고, 제외할 파일이름을 문
 #### "outDir": "./dist", 컴파일할 폴더를 지정한다.
 #### "rootDir": "./src", outDir 사용시 root파일을 감시하여 dist파일에 포함한다.
 #### "removeComments": true, 모든 주석을 컴파일시에 제외한다.
+#### "noEmitOnError": true, 기본값 false 만약 true로 설정하면 typescript 컴파일시 javascript파일을 생성하지 않는다.
 
 ## 타입 추론
 
