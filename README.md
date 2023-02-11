@@ -52,6 +52,15 @@ json 파일 가장아래 exclude 를 입력하고, 제외할 파일이름을 문
 #### "removeComments": true, 모든 주석을 컴파일시에 제외한다.
 #### "noEmitOnError": true, 기본값 false 만약 true로 설정하면 typescript 컴파일시 javascript파일을 생성하지 않는다.
 
+#### "strict": true, strict 모드 기본값은 true
+"noImplicitAny": true, 매개변수와 값의 타입을 명확하게 할떄 사용한다.
+"strictNullChecks": true, button엘리먼트를 사용할때 !를 추가해줘야하는데 false로 하면 추가하지 않아도 된다.
+  --> dom 노드를 선택할때 null을 반환하면, true이면 에러를 발생
+
+"strictBindCallApply": true, bind() 메서드를 사용할때 타입 검사
+"alwaysStrict": true, 자바스크립트 파일에 항상 'use strict' 문자열을 추가할지 안할지 선택
+
+
 ## 타입 추론
 
 타입 추론은 명시된 타입이 타입스크립트가 자동으로 해석한 방법이다.
