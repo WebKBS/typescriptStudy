@@ -1,7 +1,7 @@
 const userNAme = "Kang";
-let age = 30;
+//let age = 30;
 
-age = 29;
+//age = 29;
 
 var result;
 
@@ -51,3 +51,13 @@ const add3 = (...numbers: number[]) => {
 
 const addNumber = add3(1, 2, 3, 5, 5);
 console.log(addNumber);
+
+// 객체 구조분해
+// *** 객체 구조분해는 임의로 이름을 바꾸면 안된다.
+const person2 = {
+  firstName: "Kang",
+  age: 30,
+};
+
+// firstName에서 이름을 변경함. 객체속성 이름변경
+const { firstName: userName, age } = person2;
