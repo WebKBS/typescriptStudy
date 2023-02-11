@@ -60,6 +60,10 @@ json 파일 가장아래 exclude 를 입력하고, 제외할 파일이름을 문
 "strictBindCallApply": true, bind() 메서드를 사용할때 타입 검사
 "alwaysStrict": true, 자바스크립트 파일에 항상 'use strict' 문자열을 추가할지 안할지 선택
 
+#### "noUnusedLocals": true, 사용되지 않은 변수를 알려준다.
+#### "noUnusedParameters": true, 사용되지 않은 파라미터를 알려준다.
+#### "noImplicitReturns": true, 함수에서 return 값이 제대로 되지 않을때 알려준다.
+
 
 ## 타입 추론
 
