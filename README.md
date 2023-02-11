@@ -44,11 +44,12 @@ json 파일 가장아래 exclude 를 입력하고, 제외할 파일이름을 문
 
 
 ## compilerOptions 살펴보기
-"target": "es2016", : javascript 버전을 뜻한다.
-"lib": [], lib을 설정하게 되면 javascript 내장 API 기능들을 선택적으로 사용할 수 있다.
-"sourceMap": true,  scss처럼 javascript map 파일 생성, 크롬 콘솔 source에서 ts파일을 보고 디버깅을 할 수 있다.
-
-
+#### "target": "es2016", : javascript 버전을 뜻한다.
+#### "lib": [], lib을 설정하게 되면 javascript 내장 API 기능들을 선택적으로 사용할 수 있다.
+#### "sourceMap": true,  scss처럼 javascript map 파일 생성, 크롬 콘솔 source에서 ts파일을 보고 디버깅을 할 수 있다.
+#### "outDir": "./dist", 컴파일할 폴더를 지정한다.
+#### "rootDir": "./src", outDir 사용시 root파일을 감시하여 dist파일에 포함한다.
+#### "removeComments": true, 모든 주석을 컴파일시에 제외한다.
 
 ## 타입 추론
 
