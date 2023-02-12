@@ -2,8 +2,10 @@
 class Department {
   // private readonly id: string;
   // public name: string;
-  private employees: string[] = []; // 직원
+  protected employees: string[] = []; // 직원
   // private는 런타임에서는 불가능하다. 하지만 컴파일 과정에서 에러를 만든다.
+  // private는 확장된 클래스에서도 사용 불가능.
+  // protected는 private와 비슷하지만 이 클래스 뿐만아니라 확장된 클래스에서도 사용가능하다.
 
   constructor(private readonly id: string, public name: string) {
     // this.id = id;
@@ -37,6 +39,14 @@ class AccountingDepartment extends Department {
     super(id, "Accounting");
   }
 
+  addEmployee(name: string) {
+    if (name === "Kang") {
+      return;
+    }
+
+    this.employees.push(name);
+  }
+
   addReport(text: string) {
     this.reports.push(text);
   }
@@ -48,8 +58,13 @@ class AccountingDepartment extends Department {
 
 const it = new ITDepartment("d1", ["Kang"]);
 const accounting = new AccountingDepartment("d2", []);
+
 accounting.addReport("Somting went wrong....");
+
+accounting.addEmployee("Hello");
+
 accounting.printReports();
+accounting.printEmployeeInformation();
 
 it.addEmployee("Kang");
 it.addEmployee("Menu");
