@@ -11,7 +11,7 @@ class Department {
   }
 
   describe(this: Department) {
-    console.log(`Department(${this.id}, ${this.name})`);
+    console.log(`Department(${this.id}): ${this.name}`);
   }
 
   addEmployee(employees: string) {
@@ -25,16 +25,42 @@ class Department {
   }
 }
 
-const accouting = new Department("d1", "Accounting");
+class ITDepartment extends Department {
+  constructor(id: string, public admins: string[]) {
+    super(id, "IT");
+    this.admins = admins;
+  }
+}
 
-accouting.addEmployee("Kang");
-accouting.addEmployee("Menu");
+class AccountingDepartment extends Department {
+  constructor(id: string, private reports: string[]) {
+    super(id, "Accounting");
+  }
 
-//accouting.employees[2] = "Anna"; // 권장하지 않는 방법, class에 private 타입을 추가하면 실행되지 않는다.
+  addReport(text: string) {
+    this.reports.push(text);
+  }
 
-accouting.describe();
-accouting.name = "NEW NAME"; // public은 추가가 가능하다.
-accouting.printEmployeeInformation();
+  printReports() {
+    console.log(this.reports);
+  }
+}
+
+const it = new ITDepartment("d1", ["Kang"]);
+const accounting = new AccountingDepartment("d2", []);
+accounting.addReport("Somting went wrong....");
+accounting.printReports();
+
+it.addEmployee("Kang");
+it.addEmployee("Menu");
+
+//it.employees[2] = "Anna"; // 권장하지 않는 방법, class에 private 타입을 추가하면 실행되지 않는다.
+
+it.describe();
+it.name = "NEW NAME"; // public은 추가가 가능하다.
+it.printEmployeeInformation();
+
+console.log(it);
 
 // const accountingCopy = { name: "Dummy", describe: accouting.describe };
 
