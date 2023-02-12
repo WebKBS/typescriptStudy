@@ -1,15 +1,17 @@
 // 관례상 클래스는 첫글자를 대문자로
 class Department {
-  public name: string;
+  // private id: string;
+  // public name: string;
   private employees: string[] = []; // 직원
   // private는 런타임에서는 불가능하다. 하지만 컴파일 과정에서 에러를 만든다.
 
-  constructor(n: string) {
-    this.name = n;
+  constructor(private id: string, public name: string) {
+    // this.id = id;
+    // this.name = n;
   }
 
   describe(this: Department) {
-    console.log("Department: " + this.name);
+    console.log(`Department(${this.id}, ${this.name})`);
   }
 
   addEmployee(employees: string) {
@@ -22,12 +24,12 @@ class Department {
   }
 }
 
-const accouting = new Department("Accounting");
+const accouting = new Department("d1", "Accounting");
 
 accouting.addEmployee("Kang");
 accouting.addEmployee("Menu");
 
-accouting.employees[2] = "Anna"; // 권장하지 않는 방법, class에 private 타입을 추가하면 실행되지 않는다.
+//accouting.employees[2] = "Anna"; // 권장하지 않는 방법, class에 private 타입을 추가하면 실행되지 않는다.
 
 accouting.describe();
 accouting.name = "NEW NAME"; // public은 추가가 가능하다.
