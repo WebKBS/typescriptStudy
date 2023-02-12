@@ -1,11 +1,11 @@
 // 관례상 클래스는 첫글자를 대문자로
 class Department {
-  // private id: string;
+  // private readonly id: string;
   // public name: string;
   private employees: string[] = []; // 직원
   // private는 런타임에서는 불가능하다. 하지만 컴파일 과정에서 에러를 만든다.
 
-  constructor(private id: string, public name: string) {
+  constructor(private readonly id: string, public name: string) {
     // this.id = id;
     // this.name = n;
   }
@@ -15,6 +15,7 @@ class Department {
   }
 
   addEmployee(employees: string) {
+    //this.id = "d2";
     this.employees.push(employees);
   }
 
