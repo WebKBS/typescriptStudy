@@ -50,6 +50,7 @@ class ITDepartment extends Department {
 
 class AccountingDepartment extends Department {
   private lastReport: string;
+  private static instance: AccountingDepartment;
 
   get mostRecentReport() {
     if (this.lastReport) {
@@ -65,9 +66,18 @@ class AccountingDepartment extends Department {
     this.addReport(value);
   }
 
-  constructor(id: string, private reports: string[]) {
+  //private 를 사용하면 new 생성자를 막는다. 객체 생성 불가.
+  private constructor(id: string, private reports: string[]) {
     super(id, "Accounting");
     this.lastReport = reports[0];
+  }
+
+  static getInstance() {
+    if (AccountingDepartment.instance) {
+      return this.instance;
+    }
+    this.instance = new AccountingDepartment("d2", []);
+    return this.instance;
   }
 
   describe() {
@@ -97,7 +107,11 @@ const employee1 = Department.createEmployee("KANG");
 console.log(employee1, Department.fiscalYear);
 
 const it = new ITDepartment("d1", ["Kang"]);
-const accounting = new AccountingDepartment("d2", []);
+//const accounting = new AccountingDepartment("d2", []);
+const accounting = AccountingDepartment.getInstance();
+const accounting2 = AccountingDepartment.getInstance();
+
+console.log(accounting, accounting2);
 
 accounting.mostRecentReport = "Year Report";
 
