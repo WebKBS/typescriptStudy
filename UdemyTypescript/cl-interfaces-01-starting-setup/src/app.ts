@@ -1,5 +1,7 @@
 // 관례상 클래스는 첫글자를 대문자로
 class Department {
+  static fiscalYear = 2020;
+
   // private readonly id: string;
   // public name: string;
   protected employees: string[] = []; // 직원
@@ -10,6 +12,12 @@ class Department {
   constructor(private readonly id: string, public name: string) {
     // this.id = id;
     // this.name = n;
+    console.log(Department.fiscalYear); // 정적메서드 접근하기 위해선 class이름을 꼭 써줘야한다.
+  }
+
+  // 정적 메서드 사용하기
+  static createEmployee(name: string) {
+    return { name: name };
   }
 
   describe(this: Department) {
@@ -73,6 +81,10 @@ class AccountingDepartment extends Department {
     console.log(this.reports);
   }
 }
+
+// 정적메서드 사용하기
+const employee1 = Department.createEmployee("KANG");
+console.log(employee1, Department.fiscalYear);
 
 const it = new ITDepartment("d1", ["Kang"]);
 const accounting = new AccountingDepartment("d2", []);
