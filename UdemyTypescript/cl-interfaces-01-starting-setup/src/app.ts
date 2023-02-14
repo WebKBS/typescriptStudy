@@ -50,7 +50,7 @@ class ITDepartment extends Department {
 
 class AccountingDepartment extends Department {
   private lastReport: string;
-  private static instance: AccountingDepartment;
+  private static instance: AccountingDepartment; //싱글톤 패턴
 
   get mostRecentReport() {
     if (this.lastReport) {
@@ -73,6 +73,7 @@ class AccountingDepartment extends Department {
   }
 
   static getInstance() {
+    //싱글톤 패턴
     if (AccountingDepartment.instance) {
       return this.instance;
     }
@@ -108,6 +109,8 @@ console.log(employee1, Department.fiscalYear);
 
 const it = new ITDepartment("d1", ["Kang"]);
 //const accounting = new AccountingDepartment("d2", []);
+
+//싱글톤 패턴
 const accounting = AccountingDepartment.getInstance();
 const accounting2 = AccountingDepartment.getInstance();
 
