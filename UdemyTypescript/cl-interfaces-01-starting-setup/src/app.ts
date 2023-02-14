@@ -1,5 +1,5 @@
 // 관례상 클래스는 첫글자를 대문자로
-class Department {
+abstract class Department {
   static fiscalYear = 2020;
 
   // private readonly id: string;
@@ -9,10 +9,10 @@ class Department {
   // private는 확장된 클래스에서도 사용 불가능.
   // protected는 private와 비슷하지만 이 클래스 뿐만아니라 확장된 클래스에서도 사용가능하다.
 
-  constructor(private readonly id: string, public name: string) {
+  constructor(protected readonly id: string, public name: string) {
     // this.id = id;
     // this.name = n;
-    console.log(Department.fiscalYear); // 정적메서드 접근하기 위해선 class이름을 꼭 써줘야한다.
+    //console.log(Department.fiscalYear); // 정적메서드 접근하기 위해선 class이름을 꼭 써줘야한다.
   }
 
   // 정적 메서드 사용하기
@@ -20,9 +20,11 @@ class Department {
     return { name: name };
   }
 
-  describe(this: Department) {
-    console.log(`Department(${this.id}): ${this.name}`);
-  }
+  // describe(this: Department) {
+  //   console.log(`Department(${this.id}): ${this.name}`);
+  // }
+
+  abstract describe(this: Department): void;
 
   addEmployee(employees: string) {
     //this.id = "d2";
@@ -39,6 +41,10 @@ class ITDepartment extends Department {
   constructor(id: string, public admins: string[]) {
     super(id, "IT");
     this.admins = admins;
+  }
+
+  describe() {
+    console.log("IT Department - ID : " + this.id);
   }
 }
 
@@ -62,6 +68,10 @@ class AccountingDepartment extends Department {
   constructor(id: string, private reports: string[]) {
     super(id, "Accounting");
     this.lastReport = reports[0];
+  }
+
+  describe() {
+    console.log("Accounting Department - Id: " + this.id);
   }
 
   addEmployee(name: string) {
@@ -96,8 +106,10 @@ console.log("get: " + accounting.mostRecentReport); // 순서를 지켜야한다
 
 accounting.addEmployee("Hello");
 
-accounting.printReports();
-accounting.printEmployeeInformation();
+// accounting.printReports();
+// accounting.printEmployeeInformation();
+
+accounting.describe();
 
 it.addEmployee("Kang");
 it.addEmployee("Menu");
