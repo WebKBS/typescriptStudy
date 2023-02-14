@@ -35,8 +35,25 @@ class ITDepartment extends Department {
 }
 
 class AccountingDepartment extends Department {
+  private lastReport: string;
+
+  get mostRecentReport() {
+    if (this.lastReport) {
+      return this.lastReport;
+    }
+    throw new Error("No report found.");
+  }
+
+  set mostRecentReport(value: string) {
+    if (!value) {
+      throw new Error("Plesae pass value");
+    }
+    this.addReport(value);
+  }
+
   constructor(id: string, private reports: string[]) {
     super(id, "Accounting");
+    this.lastReport = reports[0];
   }
 
   addEmployee(name: string) {
@@ -49,6 +66,7 @@ class AccountingDepartment extends Department {
 
   addReport(text: string) {
     this.reports.push(text);
+    this.lastReport = text;
   }
 
   printReports() {
@@ -59,7 +77,10 @@ class AccountingDepartment extends Department {
 const it = new ITDepartment("d1", ["Kang"]);
 const accounting = new AccountingDepartment("d2", []);
 
+accounting.mostRecentReport = "Year Report";
+
 accounting.addReport("Somting went wrong....");
+console.log("get: " + accounting.mostRecentReport); // 순서를 지켜야한다. addReport보다 위에 있으면 에러가남.
 
 accounting.addEmployee("Hello");
 
