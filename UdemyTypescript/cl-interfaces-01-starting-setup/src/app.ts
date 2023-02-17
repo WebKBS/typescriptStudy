@@ -1,6 +1,6 @@
 interface Greetable {
   // 대문자로. 관례임
-  name: string;
+  readonly name: string;
 
   greet(phrase: string): void;
 }
