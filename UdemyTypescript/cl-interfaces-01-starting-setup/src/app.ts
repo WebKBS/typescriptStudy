@@ -1,6 +1,9 @@
-interface Greetable {
-  // 대문자로. 관례임
+interface Named {
   readonly name: string;
+}
+
+interface Greetable extends Named {
+  // 대문자로. 관례임
 
   greet(phrase: string): void;
 }
