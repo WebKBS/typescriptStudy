@@ -1,3 +1,15 @@
+// type AddFn = (a: number, b: number) => number;
+// 함수 interface
+interface AddFn {
+  (a: number, b: number): number; // => 화살표 함수가 아닌 : 콜론으로 만든다.
+}
+
+let add: AddFn;
+
+add = (n1: number, n2: number) => {
+  return n1 + n2;
+};
+
 interface Named {
   readonly name: string;
 }
