@@ -107,3 +107,23 @@ function moveAnimal(animal: Animail) {
 }
 
 moveAnimal({ type: "bird", flyingSpeed: 10 });
+
+// 형변환
+
+// 2가지 방법
+
+// 첫번쨰
+// const userInputElement = <HTMLInputElement>(
+//   document.getElementById("user-input")!
+// );
+
+// 두번째
+const userInputElement = document.getElementById(
+  "user-input"
+)! as HTMLInputElement;
+
+// ** 두가지 방법중 번갈아 사용하지 않게 일관성 유지해야 함.
+
+// ! 느낌표를 사용하는 이유: 앞의 표현식을 null로 반환하지 않겠다고 타입스크립트에게 인식시킴.
+
+userInputElement.value = "Hi there!";
