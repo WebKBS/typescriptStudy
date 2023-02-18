@@ -71,9 +71,39 @@ const v2 = new Truck();
 
 function useVehicle(vehicle: Vehicle) {
   vehicle.drive();
-  if (vehicle instanceof Truck) { //instanceof (js 내장메서드) 사용해서 조건 검사
+  if (vehicle instanceof Truck) {
+    //instanceof (js 내장메서드) 사용해서 조건 검사
     vehicle.loadCargo(1000);
   }
 }
 useVehicle(v1);
 useVehicle(v2);
+
+// 구별된 유니온
+// 공통된 속성이 있어야한다. ex) type
+
+interface Bird {
+  type: "bird";
+  flyingSpeed: number;
+}
+
+interface Horse {
+  type: "horse";
+  runningSpeed: number;
+}
+
+type Animail = Bird | Horse;
+
+function moveAnimal(animal: Animail) {
+  let speed;
+  switch (animal.type) {
+    case "bird":
+      speed = animal.flyingSpeed;
+      break;
+    case "horse":
+      speed = animal.runningSpeed;
+  }
+  console.log("Moving at speed: " + speed);
+}
+
+moveAnimal({ type: "bird", flyingSpeed: 10 });
