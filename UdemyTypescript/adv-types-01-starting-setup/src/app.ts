@@ -47,6 +47,14 @@ const fetchedUserData = {
 
 console.log(fetchedUserData?.job.title);
 
+
+// 고급타입
+const userInput = null;
+
+const storeData = userInput || "Default";
+
+console.log(storeData);
+
 // console.log(add("1", "4"));
 
 // type UnknowEmoloyee = Employee | Admin;
