@@ -22,6 +22,10 @@ type Numeric = number | boolean;
 
 type Universal = Combinable & Numeric;
 
+function add(a: number, b: number): number;
+function add(a: string, b: string): string;
+function add(a: string, b: number): string;
+function add(a: number, b: string): string;
 // 함수 타입 가드 ==================
 function add(a: Combinable, b: Combinable) {
   if (typeof a === "string" || typeof b === "string") {
@@ -30,111 +34,114 @@ function add(a: Combinable, b: Combinable) {
   return a + b;
 }
 
-console.log(add("1", "4"));
+const result = add("Kang", "Web");
+result.split(" ");
 
-type UnknowEmoloyee = Employee | Admin;
+// console.log(add("1", "4"));
 
-function printEmployeeInformation(emp: UnknowEmoloyee) {
-  console.log("Name: " + emp.name);
-  if ("privileges" in emp) {
-    console.log("Privileges: " + emp.privileges);
-  }
-  if ("startDate" in emp) {
-    console.log("start Date: " + emp.startDate);
-  }
-}
+// type UnknowEmoloyee = Employee | Admin;
 
-printEmployeeInformation(e1);
-printEmployeeInformation({ name: "Menu", startDate: new Date() });
+// function printEmployeeInformation(emp: UnknowEmoloyee) {
+//   console.log("Name: " + emp.name);
+//   if ("privileges" in emp) {
+//     console.log("Privileges: " + emp.privileges);
+//   }
+//   if ("startDate" in emp) {
+//     console.log("start Date: " + emp.startDate);
+//   }
+// }
 
-// 클래스 타입가드
-class Car {
-  drive() {
-    console.log("Driving..");
-  }
-}
+// printEmployeeInformation(e1);
+// printEmployeeInformation({ name: "Menu", startDate: new Date() });
 
-class Truck {
-  drive() {
-    console.log("Drive Truck");
-  }
+// // 클래스 타입가드
+// class Car {
+//   drive() {
+//     console.log("Driving..");
+//   }
+// }
 
-  loadCargo(amount: number) {
-    console.log("Loading cargo..." + amount);
-  }
-}
+// class Truck {
+//   drive() {
+//     console.log("Drive Truck");
+//   }
 
-type Vehicle = Car | Truck;
+//   loadCargo(amount: number) {
+//     console.log("Loading cargo..." + amount);
+//   }
+// }
 
-const v1 = new Car();
-const v2 = new Truck();
+// type Vehicle = Car | Truck;
 
-function useVehicle(vehicle: Vehicle) {
-  vehicle.drive();
-  if (vehicle instanceof Truck) {
-    //instanceof (js 내장메서드) 사용해서 조건 검사
-    vehicle.loadCargo(1000);
-  }
-}
-useVehicle(v1);
-useVehicle(v2);
+// const v1 = new Car();
+// const v2 = new Truck();
 
-// 구별된 유니온
-// 공통된 속성이 있어야한다. ex) type
+// function useVehicle(vehicle: Vehicle) {
+//   vehicle.drive();
+//   if (vehicle instanceof Truck) {
+//     //instanceof (js 내장메서드) 사용해서 조건 검사
+//     vehicle.loadCargo(1000);
+//   }
+// }
+// useVehicle(v1);
+// useVehicle(v2);
 
-interface Bird {
-  type: "bird";
-  flyingSpeed: number;
-}
+// // 구별된 유니온
+// // 공통된 속성이 있어야한다. ex) type
 
-interface Horse {
-  type: "horse";
-  runningSpeed: number;
-}
+// interface Bird {
+//   type: "bird";
+//   flyingSpeed: number;
+// }
 
-type Animail = Bird | Horse;
+// interface Horse {
+//   type: "horse";
+//   runningSpeed: number;
+// }
 
-function moveAnimal(animal: Animail) {
-  let speed;
-  switch (animal.type) {
-    case "bird":
-      speed = animal.flyingSpeed;
-      break;
-    case "horse":
-      speed = animal.runningSpeed;
-  }
-  console.log("Moving at speed: " + speed);
-}
+// type Animail = Bird | Horse;
 
-moveAnimal({ type: "bird", flyingSpeed: 10 });
+// function moveAnimal(animal: Animail) {
+//   let speed;
+//   switch (animal.type) {
+//     case "bird":
+//       speed = animal.flyingSpeed;
+//       break;
+//     case "horse":
+//       speed = animal.runningSpeed;
+//   }
+//   console.log("Moving at speed: " + speed);
+// }
 
-// 형변환
+// moveAnimal({ type: "bird", flyingSpeed: 10 });
 
-// 2가지 방법
+// // 형변환
 
-// 첫번쨰
-// const userInputElement = <HTMLInputElement>(
-//   document.getElementById("user-input")!
-// );
+// // 2가지 방법
 
-// 두번째
-const userInputElement = document.getElementById(
-  "user-input"
-)! as HTMLInputElement;
+// // 첫번쨰
+// // const userInputElement = <HTMLInputElement>(
+// //   document.getElementById("user-input")!
+// // );
 
-// ** 두가지 방법중 번갈아 사용하지 않게 일관성 유지해야 함.
+// // 두번째
+// const userInputElement = document.getElementById(
+//   "user-input"
+// )! as HTMLInputElement;
 
-// ! 느낌표를 사용하는 이유: 앞의 표현식을 null로 반환하지 않겠다고 타입스크립트에게 인식시킴.
+// // ** 두가지 방법중 번갈아 사용하지 않게 일관성 유지해야 함.
 
-userInputElement.value = "Hi there!";
+// // ! 느낌표를 사용하는 이유: 앞의 표현식을 null로 반환하지 않겠다고 타입스크립트에게 인식시킴.
 
-// 인덱스 속성
-interface ErrorContainer {
-  // {email: '이메일 양식이 유효하지 않습니다.', username: '문자로 시작해야합니다.'}
-  [prop: string]: string;
-}
+// userInputElement.value = "Hi there!";
 
-const errorBag: ErrorContainer = {
-  email: "이메일 양식이 유효하지 않습니다.",
-  username: "첫글자는 대문자여야 합니다.",
-};
+// // 인덱스 속성
+// interface ErrorContainer {
+//   // {email: '이메일 양식이 유효하지 않습니다.', username: '문자로 시작해야합니다.'}
+//   [prop: string]: string;
+// }
+
+// const errorBag: ErrorContainer = {
+//   email: "이메일 양식이 유효하지 않습니다.",
+//   username: "첫글자는 대문자여야 합니다.",
+// };
