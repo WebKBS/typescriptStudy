@@ -37,6 +37,16 @@ function add(a: Combinable, b: Combinable) {
 const result = add("Kang", "Web");
 result.split(" ");
 
+// 선택적 옵셔널 체이닝
+// 무슨 데이터가 들어올지 모를때
+const fetchedUserData = {
+  id: "u1",
+  name: "Kang",
+  job: { title: "CEO", description: "My own company" },
+};
+
+console.log(fetchedUserData?.job.title);
+
 // console.log(add("1", "4"));
 
 // type UnknowEmoloyee = Employee | Admin;
