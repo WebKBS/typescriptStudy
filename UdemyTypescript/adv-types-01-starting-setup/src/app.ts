@@ -127,3 +127,14 @@ const userInputElement = document.getElementById(
 // ! 느낌표를 사용하는 이유: 앞의 표현식을 null로 반환하지 않겠다고 타입스크립트에게 인식시킴.
 
 userInputElement.value = "Hi there!";
+
+// 인덱스 속성
+interface ErrorContainer {
+  // {email: '이메일 양식이 유효하지 않습니다.', username: '문자로 시작해야합니다.'}
+  [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: "이메일 양식이 유효하지 않습니다.",
+  username: "첫글자는 대문자여야 합니다.",
+};
