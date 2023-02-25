@@ -13,7 +13,8 @@
 // });
 
 // <T> 는 Type의 첫글자를따서 관례상 T라고 적는다. 두번째 파라미터에는 U를 사용한다.
-function merge<T, U>(objA: T, objB: U) {
+// extends를 사용하면 더욱 엄격한 제약 조건을 만들수있다.
+function merge<T extends object, U extends object>(objA: T, objB: U) {
   return Object.assign(objA, objB);
 }
 // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
