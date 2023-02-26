@@ -20,3 +20,21 @@ function merge<T extends object, U extends object>(objA: T, objB: U) {
 // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
 
 const mergeObj = merge({ name: "Kang", hobbies: ["sports"] }, { age: "30" });
+
+/////////////
+interface Lengthy {
+  length: number;
+}
+
+// length를 사용하기 위해서는 별도로 타입을 지정해줘야한다.
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+  let descriptionText = "Got no value";
+  if (element.length === 1) {
+    descriptionText = "Got 1 elements.";
+  } else if (element.length > 1) {
+    descriptionText = "Got " + element.length + " elements.";
+  }
+  return [element, descriptionText];
+}
+
+console.log(countAndDescribe("Hi there!"));
