@@ -89,3 +89,28 @@ const numberStorage = new DataStorage<number>();
 // objStorage.addItem({ name: "Menu" });
 // objStorage.removeItem(kangObj); // 배열의 마지막 요소를 식별할수 없으므로 마지막 요소가 남아 Kang이 남는다. 조건문처리
 // console.log(objStorage.getItems());
+
+/////////////////// 제네릭 유틸리티
+
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeUntile: Date;
+}
+
+function createCourseGoal(
+  title: string,
+  description: string,
+  date: Date
+): CourseGoal {
+  let courseGoal: Partial<CourseGoal> = {};
+  courseGoal.title = title;
+  courseGoal.description = description;
+  courseGoal.completeUntile = date;
+  return courseGoal as CourseGoal;
+
+  //return { title: title, description: description, completeUntile: date };
+}
+
+const names: Readonly<string[]> = ["Kang", "Sports"];
+// names.push("Menu"); // readonly는 추가 삭제 변경 등 불가
