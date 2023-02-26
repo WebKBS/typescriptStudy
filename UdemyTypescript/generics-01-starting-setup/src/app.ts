@@ -49,3 +49,43 @@ function extractAndConvert<T extends object, U extends keyof T>(
 }
 
 extractAndConvert({ name: "Kang" }, "name");
+
+/////////////// 제네릭 클래스 사용법
+
+class DataStorage<T extends string | number | boolean> {
+  private data: T[] = [];
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+
+  removeItem(item: T) {
+    if (this.data.indexOf(item) === -1) {
+      return;
+    }
+    this.data.splice(this.data.indexOf(item), 1);
+  }
+
+  getItems() {
+    return [...this.data];
+  }
+}
+
+const textStorage = new DataStorage<string>();
+
+textStorage.addItem("Kang");
+textStorage.addItem("Menu");
+textStorage.removeItem("Kang");
+
+console.log(textStorage.getItems());
+
+const numberStorage = new DataStorage<number>();
+
+// const objStorage = new DataStorage<object>();
+
+// const kangObj = { name: "Kang" };
+
+// objStorage.addItem(kangObj);
+// objStorage.addItem({ name: "Menu" });
+// objStorage.removeItem(kangObj); // 배열의 마지막 요소를 식별할수 없으므로 마지막 요소가 남아 Kang이 남는다. 조건문처리
+// console.log(objStorage.getItems());
