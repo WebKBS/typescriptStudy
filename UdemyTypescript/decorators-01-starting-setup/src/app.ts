@@ -7,8 +7,21 @@ function Logger(logString: string) {
   };
 }
 
+function WithTemplete(templete: string, hookId: string) {
+  return function (constructor: any) {
+    const hookEl = document.getElementById(hookId);
+    const p = new constructor();
+
+    if (hookEl) {
+      hookEl.innerHTML = templete;
+      hookEl.querySelector("h1")!.textContent = p.name;
+    }
+  };
+}
+
 // 데코레이터는 인수를 받는다.
-@Logger("Loggin - Person")
+//@Logger("Loggin - Person")
+@WithTemplete("<h1>My Person Object </h1>", "app")
 class Person {
   name = "Kang";
 
