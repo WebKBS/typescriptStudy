@@ -10,14 +10,20 @@ function Logger(logString: string) {
 
 function WithTemplete(templete: string, hookId: string) {
   console.log("Templete Factory");
-  return function (constructor: any) {
-    const hookEl = document.getElementById(hookId);
-    const p = new constructor();
+  return function <T extends { new (...args: any[]): { name: string } }>(
+    originalConstructor: T
+  ) {
+    return class extends originalConstructor {
+      constructor(..._args: any[]) {
+        super();
+        const hookEl = document.getElementById(hookId);
 
-    if (hookEl) {
-      hookEl.innerHTML = templete;
-      hookEl.querySelector("h1")!.textContent = p.name;
-    }
+        if (hookEl) {
+          hookEl.innerHTML = templete;
+          hookEl.querySelector("h1")!.textContent = this.name;
+        }
+      }
+    };
   };
 }
 
@@ -70,6 +76,8 @@ function Log4(target: any, name: string | symbol, position: number) {
   console.log(position);
 }
 
+// 데코레이터는 클래스가 정의 되었을떄 작동하는 함수이다.ㄴ
+
 class Product {
   @Log
   title: string;
@@ -94,3 +102,6 @@ class Product {
     return this._price * (1 + tax);
   }
 }
+
+const p1 = new Product("book", 19);
+const p2 = new Product("book", 29);
