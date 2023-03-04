@@ -1,3 +1,19 @@
+// autobind decorator
+function autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
+  const originalMethod = descriptor.value;
+  const adjDescriptor: PropertyDescriptor = {
+    configurable: true,
+    get() {
+      const boundFn = originalMethod.bind(this);
+      return boundFn;
+    },
+  };
+
+  return adjDescriptor;
+  //tsconfig json에서 experimentalDecorators 를 활성화 해야함.
+}
+
+// ProjectInput class
 class ProjectInput {
   templateElement: HTMLTemplateElement;
   hostElement: HTMLDivElement;
@@ -34,13 +50,14 @@ class ProjectInput {
     this.attach();
   }
 
+  @autobind
   private submitHandler(event: Event) {
     event.preventDefault();
     console.log(this.titleInputElement.value);
   }
 
   private configure() {
-    this.element.addEventListener("submit", this.submitHandler.bind(this)); // 이벤트를 전달하기 위해 bind(this)를 해야한다.
+    this.element.addEventListener("submit", this.submitHandler); // 이벤트를 전달하기 위해 bind(this)를 해야한다.
   }
 
   private attach() {
