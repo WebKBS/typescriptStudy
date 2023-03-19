@@ -1,10 +1,6 @@
-// /// 슬러시 3개내는 타입스크립트의 특별한 주석
+import { ProjectInput } from "./components/project-input.js";
+import { ProjectList } from "./components/project-list.js";
 
-/// <reference path="components/project-input.ts" />
-/// <reference path="components/project-list.ts" />
-
-namespace App {
-  new ProjectInput();
-  new ProjectList("active");
-  new ProjectList("finished");
-}
+new ProjectInput();
+new ProjectList("active");
+new ProjectList("finished");
