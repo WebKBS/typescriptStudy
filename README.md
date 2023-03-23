@@ -112,3 +112,7 @@ ex) bundle.js 생성 후
 index HTML에서 bundle.js를 불러온다.
 
 - 크롬 개발자 도구 source 탭에서 디버깅 가능.
+
+## webpack dev서버.
+
+package.json 에서 scripts - start부분에 'webpack-dev-server' 로 바꿔준다.

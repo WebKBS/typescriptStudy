@@ -6,10 +6,9 @@ module.exports = {
   output: {
     filename: "bundle.js", // 이름은 자유
     path: path.resolve(__dirname, "dist"),
-    publicPath: "dist",
   },
 
-  devtool: "inline-source-map",
+  devtool: "none",
 
   module: {
     rules: [
