@@ -1,12 +1,24 @@
 import "./App.css";
-import Greeter from "./components/Greeter";
+// import Greeter from "./components/Greeter";
+import ShoppingList from "./components/shoppingList";
 
 function App() {
+  const items = [
+    {
+      id: 1,
+      product: "lemon",
+      quantity: 3,
+    },
+    {
+      id: 2,
+      product: "chicken",
+      quantity: 10,
+    },
+  ];
+
   return (
-    <div className="App">
-      <Greeter person="hello" />
-      <Greeter person="world" />
-      <Greeter person="hi" />
+    <div>
+      <ShoppingList items={items} />
     </div>
   );
 }
